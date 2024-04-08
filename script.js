@@ -33,7 +33,7 @@ while(count > 0) {
     console.log("your wins: " + playerWins)
     console.log("my wins: " + computerWins)
 }
-if(playerWins > computerWins) {
+if(playerWins < computerWins) {
     console.log("Computer wins :(")
 } else {
     console.log("You win!! :D")
