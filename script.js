@@ -39,5 +39,5 @@ if(playerWins > computerWins) {
     console.log("You win!! :D")
 }
 }
-
+//test
 playGame(5);
