@@ -1,1 +1,75 @@
-/* test */
+
+body {
+    display: flex;
+    flex-direction: column;
+    flex: auto;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    gap: 10px;
+    height: 100vh;
+
+    background-color: rgb(254, 255, 166);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* button code at the bottom */
+
+
+/* .display {
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px;
+} */
+
+.highlight {
+    /* background-color: yellow; */
+    font-weight: bold;
+}
+
+
+.results {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* .choice {
+
+}
+
+.wins {
+
+} */
+
+.status {
+    font-weight: bold;
+}
+
+
+/* button code starts here */
+
+
+button {all: unset}
+
+.buttons {
+    display: flex;
+    gap: 8px;
+}
+
+
+#clickme {
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+
+#clickme:hover {
+  background: #F6F9FE;
+}
+
+#clickme:active {
+  box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
+  outline: none;
+}

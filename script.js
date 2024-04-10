@@ -1,40 +1,94 @@
 
-function playGame(count) {
-
-let choices = ["rock", "paper", "scissors"];
-
 let playerWins = 0;
 
 let computerWins = 0;
 
-while(count > 0) {
+let rounds = 0;
+let n = 5;
 
-    let playerChoice = prompt("Write your choice (Rock, Paper, or Scissors)").toLowerCase();
+function playRound(button) {
+
+    if(rounds < n) {
+    
+    let choices = ["rock", "paper", "scissors"];
+    
+    let playerChoice = String(button);
 
     let computerChoice = choices[parseInt(Math.random() * 3)];
     
-    console.log("You chose " + playerChoice +" and I choose "+computerChoice);
+    displayChoice.innerHTML = "You chose <span class= \"highlight\">" + playerChoice +"</span> and computer chose <span class = \"highlight\">"+computerChoice+"</span>";
 
 
     if(playerChoice === computerChoice) {
-        console.log("Draw!")
+        displayWin.textContent = "Draw!";
     } else if((playerChoice == 'rock' && computerChoice == 'scissors') || (playerChoice == 'paper' && computerChoice == 'rock') || (playerChoice == 'scissors' && computerChoice == 'paper')) {
-        console.log("You win!")
+        displayWin.textContent = "You win! :D";
         playerWins++;
-        count--;
+        rounds++;
     } else if((playerChoice == 'rock' && computerChoice == 'paper') || (playerChoice == 'paper' && computerChoice == 'scissors') || (playerChoice == 'scissors' && computerChoice == 'rock')) {
-        console.log("I win!")
+        displayWin.textContent = "computer wins :("
         computerWins++;
-        count--;
+        rounds++;
     } else {
         console.log("invalid choice")
     }
 
-    console.log("your wins: " + playerWins)
-    console.log("my wins: " + computerWins)
+    
+    displayPlayerWins.textContent = `your wins: ${playerWins}`;
+    displayComputerWins.textContent = `computer wins: ${computerWins}`;
+    
+    if(rounds === n) {
+    displayStatus.textContent = (playerWins<computerWins) ? 'Computer wins the game ;-;' : 'You win the game!! ^o^'}
+    // playAgain.textContent = "Reset"
+    }
 }
 
-console.log((playerWins<computerWins) ? "Computer wins :(" : "You win!! :D")
-}
-//test
-playGame(5);
+const buttons = document.querySelector(".buttons");
+
+buttons.addEventListener("click", (event) => {
+    let target = event.target;
+    
+    playRound(target.textContent.toLowerCase())
+    displayBorder();
+
+
+// playAgain.addEventListener("click", () => {
+//     console.log("test");
+// })
+})
+
+
+
+const display = document.querySelector(".display");
+const results = document.createElement("p");
+results.classList.add("results");
+
+const displayChoice = document.createElement("div");
+displayChoice.classList.add("choice");
+
+const displayWin = document.createElement("div");
+displayWin.classList.add("choice")
+
+const displayPlayerWins = document.createElement("div");
+const displayComputerWins = document.createElement ("div");
+displayComputerWins.classList.add("wins");
+displayComputerWins.classList.add("wins");
+
+const displayStatus = document.createElement("div");
+displayStatus.classList.add("status");
+
+// const playAgain = document.querySelector(".reset");
+
+display.appendChild(results);
+results.appendChild(displayChoice);
+results.appendChild(displayWin);
+results.appendChild(displayPlayerWins);
+results.appendChild(displayComputerWins);
+results.appendChild(displayStatus);
+
+
+let displayBorder = () => {
+    display.style.cssText = "border: 2px solid black; border-radius: 10px; padding: 10px;"
+    // playAgain.id = "clickme";
+
+};
